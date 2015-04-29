@@ -3,4 +3,6 @@ class SiteController < ApplicationController
 	end
 	def schedule
 	end
+	def how
+	end
 end
