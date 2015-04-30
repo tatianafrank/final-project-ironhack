@@ -22,6 +22,7 @@
       <% unless current_user %>
       <a href="/users/sign_up">
       Sign Up </a>
+
       <% end %>
       </li>
       <li>
@@ -50,32 +51,10 @@
 </div>
 <!--/.nav-collapse -->
 </nav>
-<br>
-<br>
-<br>
-<h2>Log in</h2>
+<!-- add path that gets user's saved weekend
+<%=link_to('My weeqend schedule',)%> 
+ add view for search page-->
+new search
+<!-- queries for new weeqend  -->
+new schedule
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>

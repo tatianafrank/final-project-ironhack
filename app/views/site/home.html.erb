@@ -63,13 +63,16 @@
         Your weekend curated in one click </h2>
         <div class="details wow fadeInUp">
           <p>
-            Sign up for a more personalized one-click weekend
+            <%=link_to('Sign up for a more personalized one-click weekend', new_user_registration_path)%>
           </p>
         </div>
   
+
+      
         <div class="buttons ">
+          <span class="details wow fadeInLeft unlock-button">Unlock your city</span><br>
           <a class="wow fadeInLeft btn eventime_button" href="multi-about.html" role="button">
-         New York </a> <span class="details wow fadeInLeft">Unlock your city.</span>
+         New York </a> 
          <!--  <a class="wow fadeInRight btn eventime_button" href="/users/sign_up" role="button">
           Sign Up </a> -->
         </div>
