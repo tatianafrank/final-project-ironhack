@@ -1,0 +1,571 @@
+<nav class="navbar nav_mask_full">
+<div class="navi_container">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+    <span class="sr-only">
+    Toggle navigation </span>
+    <span class="icon-bar">
+    </span>
+    <span class="icon-bar">
+    </span>
+    <span class="icon-bar">
+    </span>
+    </button>
+    <a class="navbar-brand" href="/">
+    weeqend </a>
+  </div>
+  <div id="navbar" class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+       <li>
+      <% unless current_user %>
+      <a href="/users/sign_up">
+      Sign Up </a>
+      <% end %>
+      </li>
+      <li>
+        <% unless current_user %>
+        <a href="/users/sign_in">
+      Login </a>
+      <% end %>
+      </li>
+      <li>
+      <a class="active" href="/schedule">
+      Schedule </a>
+      </li>
+      <li>
+      <a href="/how-it-works">
+      How it works </a>
+      </li>
+        <li>
+          <% if current_user %>
+          <%=link_to('Log Out', destroy_user_session_path, method:'delete')%>
+          <% end %>
+      </li>
+    </ul>
+  </div>
+  <!--/.nav-collapse -->
+</div>
+<!--/.nav-collapse -->
+</nav>
+<div class="gap">
+</div>
+<div class="first_line wow fadeInDown">
+</div>
+<div class="first_title">
+  <p class=" wow fadeInDown">
+     SCHEDULE
+  </p>
+</div>
+<div class="first_description">
+  <p class=" wow fadeInDown">
+   
+  </p>
+</div>
+<div class="mini_gap">
+</div>
+<div id="sh_carousel" class="carousel slide">
+  <!-- Carousel indicators -->
+  <div class="carousel-indicators">
+    <div class=" wow fadeInLeft active btn eventime_button graybtn graytxt" data-target="#sh_carousel" data-slide-to="0">
+       Friday
+    </div>
+    <div class=" wow fadeInRight btn eventime_button graybtn graytxt" data-target="#sh_carousel" data-slide-to="1">
+       Saturday
+    </div>
+    <div class=" wow fadeInRight btn eventime_button graybtn graytxt" data-target="#sh_carousel" data-slide-to="2">
+       Sunday
+    </div>
+    <div class=" wow fadeInRight btn eventime_button graybtn graytxt" data-target="#sh_carousel" data-slide-to="3">
+       Next Weekend
+    </div>
+  </div>
+  <!-- Carousel items -->
+  <% @schedule.each do |event| %>
+  <div class="carousel-inner">
+    <div class="active item">
+      <!-- DAY ONE -->
+      <div class="schedule_date wow fadeInLeft">
+        <%= Chronic.parse('friday').day %>
+      </div>
+      <div class="schedule_month wow fadeInRight">
+
+         <%= Date::MONTHNAMES[Chronic.parse('friday').month] %>
+        
+      </div>
+      <!-- Accordion item -->
+      <div class="mini_gap">
+      </div>
+      <div id="accordion1">
+        <div class="panel wow fadeInDown">
+          <a data-toggle="collapse" data-parent="#accordion1" href="#one_one">
+          <div class="accordion_left">
+            <div class="accordions_titles_small">
+              <p class="accordion_date">
+                 <%=event.start_time%>-<%=event.end_time%>
+              </p>
+            </div>
+          </div>
+          <div class="accordion_right">
+
+            <div class="accordions_titles_small">
+              <div class="accordion_description">
+                <p>
+                   <%=event.title%>
+                </p>
+              </div>
+            </div>
+          </div>
+          </a>
+        </div>
+        <div id="one_one" class="panel-collapse collapse accordion_full">
+          <p>
+            <%=event.description%>
+            <a href="multi-reservation.html" class="schedule_reservation wow btn eventime_button">
+           Make Reservation</a>
+          </p>
+        </div>
+        <!-- Accordion item -->
+        <div class="mini_gap">
+        </div>
+        
+        <!-- End of the accordion -->
+      </div>
+
+<%end%>
+
+      <!-- End of Friday -->
+    </div>
+    <div class="item">
+      <!-- Saturday -->
+      <div class="schedule_date wow fadeInLeft">
+        <%= Chronic.parse('friday').day %>
+      </div>
+      <div class="schedule_month wow fadeInRight">
+
+         <%= Date::MONTHNAMES[Chronic.parse('saturday').month] %>
+      </div>
+    
+      <!-- Accordion item -->
+      <div id="accordion2">
+        <div class="mini_gap">
+        </div>
+        <div class="wow fadeInDown panel">
+          <a data-toggle="collapse" data-parent="#accordion2" href="#two_one">
+          <div class="accordion_left">
+            <div class="accordions_titles">
+              <p class="accordion_date">
+                 9:30-11:30 a.m.
+              </p>
+            </div>
+          </div>
+          <div class="accordion_right">
+            <div class="accordions_titles">
+              <div class="accordion_description">
+                <p>
+                   Strating Workshops - Basic designs goods
+                </p>
+                <p class="name">
+                   John Doe - CEO, Typocorp
+                </p>
+              </div>
+            </div>
+          </div>
+          </a>
+        </div>
+        <div id="two_one" class="panel-collapse collapse accordion_full">
+          <p>
+             Workshops - By tradition workshop sessions at Design days conference aim to bring together users and experts in interactive, half-day sessions elaborating specific topics. DESIGN 2016 workshops will be organised to promote integration of different views, approaches and methods. Workshop coordinators could invite selected presentations and demonstrations in order to stimulate the debate as well as to propose any format of delivery that inspires interaction. <br>
+            <br>
+            <b>Venue:</b> Red Hall
+          </p>
+        </div>
+        <!-- Accordion item -->
+        <div class="mini_gap">
+        </div>
+        <div class="wow fadeInDown panel">
+          <a data-toggle="collapse" data-parent="#accordion2" href="#two_two">
+          <div class="accordion_left">
+            <div class="accordions_titles_small">
+              <p class="accordion_date">
+                 11:30-12:30 a.m.
+              </p>
+            </div>
+          </div>
+          <div class="accordion_right">
+            <div class="accordions_titles_small">
+              <div class="accordion_description">
+                <p>
+                   Coffee brake
+                </p>
+              </div>
+            </div>
+          </div>
+          </a>
+        </div>
+        <div id="two_two" class="panel-collapse collapse accordion_full">
+          <p>
+            <b>Venue:</b> Summer Caffe
+          </p>
+        </div>
+        <!-- Accordion item -->
+        <div class="mini_gap">
+        </div>
+        <div class="panel wow fadeInDown">
+          <a data-toggle="collapse" data-parent="#accordion2" href="#two_three">
+          <div class="accordion_left">
+            <div class="accordions_titles_very_big">
+              <p class="accordion_date">
+                 12:30-4:00 p.m.
+              </p>
+            </div>
+          </div>
+          <div class="accordion_right">
+            <div class="accordions_titles_very_big">
+              <div class="accordion_description">
+                <p>
+                   Debate of Responcive Web Design
+                </p>
+                <p class="name">
+                   John Yang - CEO, Webapps corp. / Max Jordan - CEO, Wdesign Ltd.
+                </p>
+              </div>
+            </div>
+          </div>
+          </a>
+        </div>
+        <div id="two_three" class="panel-collapse collapse accordion_full">
+          <p>
+             The purpose of debate is to investigate in a forensic manner some key topics that affect the engineering design research community. Opponents and debate moderator will be distinguished key players in the community presenting evidence for or against a particular topic. <br>
+            <br>
+            <b>Venue:</b> Yellow Hall
+          </p>
+        </div>
+        <!-- Accordion item -->
+        <div class="mini_gap">
+        </div>
+        <div class="panel wow fadeInDown">
+          <a data-toggle="collapse" data-parent="#accordion2" href="#two_four">
+          <div class="accordion_left">
+            <div class="accordions_titles">
+              <p class="accordion_date">
+                 4:00-7:00 p.m.
+              </p>
+            </div>
+          </div>
+          <div class="accordion_right">
+            <div class="accordions_titles">
+              <div class="accordion_description">
+                <p>
+                   Lunch and Comedy Club Event
+                </p>
+                <p class="name">
+                   Andrew Yang, John Verkovich, Alen Draks
+                </p>
+              </div>
+            </div>
+          </div>
+          </a>
+        </div>
+        <div id="two_four" class="panel-collapse collapse accordion_full">
+          <p>
+             Realax time! <br>
+            <br>
+            <b>Venue:</b> Black Hall
+          </p>
+        </div>
+          <a href="multi-reservation.html" class="schedule_reservation wow btn eventime_button  fadeInRight">
+           Make Reservation
+          </a>
+        <!-- End of the accordion -->
+      </div>
+      <!-- End of the day -->
+    </div>
+    <div class="item">
+      <!-- Sunday -->
+      <div class="schedule_date wow fadeInLeft">
+        <%= Chronic.parse('sunday').day %>
+      </div>
+      <div class="schedule_month wow fadeInRight">
+
+         <%= Date::MONTHNAMES[Chronic.parse('sunday').month] %>
+      <!-- Accordion item -->
+      <div class="mini_gap">
+      </div>
+      <div id="accordion3">
+        <div class="wow fadeInDown panel">
+          <a data-toggle="collapse" data-parent="#accordion3" href="#three_one">
+          <div class="accordion_left">
+            <div class="accordions_titles">
+              <p class="accordion_date">
+                 9:00-10:30 a.m.
+              </p>
+            </div>
+          </div>
+          <div class="accordion_right">
+            <div class="accordions_titles">
+              <div class="accordion_description">
+                <p>
+                   The role of designer in service design processes
+                </p>
+                <p class="name">
+                   Jenifer Wong - Designer, Iker Comp.
+                </p>
+              </div>
+            </div>
+          </div>
+          </a>
+        </div>
+        <div id="three_one" class="panel-collapse collapse accordion_full">
+          <p>
+             Education as a model-designed service. E-services in the public sector. How to use the design process User Centered Design in design services? <br>
+            <br>
+            <b>Venue:</b> Yellow Hall
+          </p>
+        </div>
+        <!-- Accordion item -->
+        <div class="mini_gap">
+        </div>
+        <div class="wow fadeInDown panel">
+          <a data-toggle="collapse" data-parent="#accordion3" href="#three_two">
+          <div class="accordion_left">
+            <div class="accordions_titles_very_big">
+              <p class="accordion_date">
+                 10:30-2:00 p.m.
+              </p>
+            </div>
+          </div>
+          <div class="accordion_right">
+            <div class="accordions_titles_very_big">
+              <div class="accordion_description">
+                <p>
+                   Students Design Forums
+                </p>
+                <p class="name">
+                   Spceial Guest- Mark Jacobsovich CEO, Comp Ltd.
+                </p>
+              </div>
+            </div>
+          </div>
+          </a>
+        </div>
+        <div id="three_two" class="panel-collapse collapse accordion_full">
+          <p>
+             The forum will be a unique opportunity for younger researchers and PhD students to discuss their research questions and ideas with experienced researchers, practitioners and managers in order to facilitate their research efforts. The series of grouped presentations will be used to raise the questions and stimulate debate in a round table style. <br>
+            <br>
+            <b>Venue:</b> Red Hall
+          </p>
+        </div>
+        <!-- Accordion item -->
+        <div class="mini_gap">
+        </div>
+        <div class="wow fadeInDown panel">
+          <a data-toggle="collapse" data-parent="#accordion3" href="#three_three">
+          <div class="accordion_left">
+            <div class="accordions_titles_small">
+              <p class="accordion_date">
+                 2:00-3:00 p.m.
+              </p>
+            </div>
+          </div>
+          <div class="accordion_right">
+            <div class="accordions_titles_small">
+              <div class="accordion_description">
+                <p>
+                   Coffee brake
+                </p>
+              </div>
+            </div>
+          </div>
+          </a>
+        </div>
+        <div id="three_three" class="panel-collapse collapse accordion_full">
+          <p>
+            <b>Venue:</b> Summer Cafe
+          </p>
+        </div>
+        <!-- Accordion item -->
+        <div class="mini_gap">
+        </div>
+        <div class="wow fadeInDown panel">
+          <a data-toggle="collapse" data-parent="#accordion3" href="#three_four">
+          <div class="accordion_left">
+            <div class="accordions_titles">
+              <p class="accordion_date">
+                 3:00-5:00 p.m.
+              </p>
+            </div>
+          </div>
+          <div class="accordion_right">
+            <div class="accordions_titles">
+              <div class="accordion_description">
+                <p>
+                   Closing of the conference
+                </p>
+              </div>
+            </div>
+          </div>
+          </a>
+        </div>
+        <div id="three_four" class="panel-collapse collapse accordion_full">
+          <p>
+            <b>Venue:</b> Black Hall
+          </p>
+        </div>
+          <a href="multi-reservation.html" class="schedule_reservation wow btn eventime_button  fadeInRight">
+           Make Reservation
+          </a>
+        <!-- End of the accordion -->
+      </div>
+      <!-- End of the day -->
+    </div>
+    <div class="item">
+      <!-- Next weekend -->
+       <div class="schedule_date wow fadeInLeft">
+        <%= Chronic.parse('next friday').day %>
+      </div>
+      <div class="schedule_month wow fadeInRight">
+
+         <%= Date::MONTHNAMES[Chronic.parse('next friday').month] %>
+      <!-- Accordion item -->
+      <div class="mini_gap">
+      </div>
+      <div id="accordion4">
+        <div class="wow fadeInDown panel">
+          <a data-toggle="collapse" data-parent="#accordion3" href="#four_one">
+          <div class="accordion_left">
+            <div class="accordions_titles">
+              <p class="accordion_date">
+                 10:30-12:00 a.m.
+              </p>
+            </div>
+          </div>
+          <div class="accordion_right">
+            <div class="accordions_titles">
+              <div class="accordion_description">
+                <p>
+                   After Party - Thematic sessions
+                </p>
+                <p class="name">
+                   Design thinking, Experiences of the Centre for Information Technology in the creation of e-services for the public sector.
+                </p>
+              </div>
+            </div>
+          </div>
+          </a>
+        </div>
+        <div id="four_one" class="panel-collapse collapse accordion_full">
+          <p>
+             How to build UX in the organization or what can be gained by working with designers. <br>
+            <br>
+            <b>Venue:</b> Yellow Hall
+          </p>
+        </div>
+        <!-- Accordion item -->
+        <div class="mini_gap">
+        </div>
+        <div class="wow fadeInDown panel">
+          <a data-toggle="collapse" data-parent="#accordion3" href="#four_two">
+          <div class="accordion_left">
+            <div class="accordions_titles_small">
+              <p class="accordion_date">
+                 12:00-1:00 p.m.
+              </p>
+            </div>
+          </div>
+          <div class="accordion_right">
+            <div class="accordions_titles_small">
+              <div class="accordion_description">
+                <p>
+                   Lunch Brake
+                </p>
+              </div>
+            </div>
+          </div>
+          </a>
+        </div>
+        <div id="four_two" class="panel-collapse collapse accordion_full">
+          <p>
+            <b>Venue:</b> Red Hall
+          </p>
+        </div>
+        <!-- Accordion item -->
+        <div class="mini_gap">
+        </div>
+        <div class="wow fadeInDown panel">
+          <a data-toggle="collapse" data-parent="#accordion3" href="#four_three">
+          <div class="accordion_left">
+            <div class="accordions_titles_big">
+              <p class="accordion_date">
+                 1:00-4:00 p.m.
+              </p>
+            </div>
+          </div>
+          <div class="accordion_right">
+            <div class="accordions_titles_big">
+              <div class="accordion_description">
+                <p>
+                   Expositions with Coffee brakes
+                </p>
+              </div>
+            </div>
+          </div>
+          </a>
+        </div>
+        <div id="four_three" class="panel-collapse collapse accordion_full">
+          <p>
+            <b>Venue:</b> Main Hall
+          </p>
+        </div>
+        <!-- Accordion item -->
+        <div class="mini_gap">
+        </div>
+        <div class="wow fadeInDown panel">
+          <a data-toggle="collapse" data-parent="#accordion3" href="#four_four">
+          <div class="accordion_left">
+            <div class="accordions_titles">
+              <p class="accordion_date">
+                 3:00-5:00 p.m.
+              </p>
+            </div>
+          </div>
+          <div class="accordion_right">
+            <div class="accordions_titles">
+              <div class="accordion_description">
+                <p>
+                   Design for you! Promotion and education of service design in Design Days Project.
+                </p>
+              </div>
+            </div>
+          </div>
+          </a>
+        </div>
+        <div id="four_four" class="panel-collapse collapse accordion_full">
+          <p>
+            <b>Venue:</b> Black Hall
+          </p>
+        </div>
+          <a href="multi-reservation.html" class="schedule_reservation wow btn eventime_button  fadeInRight">
+           Make Reservation
+          </a>
+        <!-- End of the accordion -->
+      </div>
+      <!-- End of the day -->
+    </div>
+    <!-- Carousel nav -->
+    <a class="left_arrow wow fadeInLeft" href="#sh_carousel" data-slide="prev">
+    <svg width="26px" height="48">
+    <polygon points="3.3,24.5 25.5,2.3 24,0.8 0.3,24.5 24,48.2 25.5,46.7"/>
+    </svg>
+    </a>
+    <a class="right_arrow wow fadeInRight" href="#sh_carousel" data-slide="next">
+    <svg width="26px" height="48">
+    <polygon points="22.5,24.5 0.3,2.3 1.8,0.8 25.5,24.5 1.8,48.2 0.3,46.7"/>
+    </svg>
+    </a>
+    <div class="gap">
+    </div>
+  </div>
+</div>
+<!-- End Schedule -->
+<div class="mini_gap">
+</div>

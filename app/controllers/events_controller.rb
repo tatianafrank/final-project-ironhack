@@ -8,7 +8,7 @@ class EventsController < ApplicationController
 		@event.save 
 	end
 	def index
-		@events=Event.order(:start_date)
+		@events=Event.order(:start_date, 'RANDOM()')
 		@user=current_user
 	end
 	def show

@@ -20,12 +20,7 @@ How it works </title>
 <link href="css/colors_4.css" rel="stylesheet">
 </head>
 <body>
-<div id="preloader">
-  <div class="pre_container">
-    <div class="loader">
-    </div>
-  </div>
-</div>
+
 <!-- Fixed navbar -->
 <nav class="navbar nav_mask_full">
 <div class="navi_container">
@@ -60,6 +55,11 @@ How it works </title>
       <li>
       <a class="active" href="multi-about.html">
       How it works </a>
+      </li>
+      <li>
+        <% if current_user %>
+          <%=link_to('Log Out', destroy_user_session_path, method:'delete')%>
+        <% end %>
       </li>
     </ul>
   </div>
