@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   post '/addtags' => 'site#addTags'
   get '/users_home' => 'site#home'
   get '/myschedule' => 'schedule#my_schedule'
+  get 'api/myschedule/:day' => 'api/schedule#my_schedule'
 end
