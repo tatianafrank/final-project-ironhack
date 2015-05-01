@@ -1,51 +1,51 @@
 <nav class="navbar nav_mask_full">
-<div class="navi_container">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-    <span class="sr-only">
-    Toggle navigation </span>
-    <span class="icon-bar">
-    </span>
-    <span class="icon-bar">
-    </span>
-    <span class="icon-bar">
-    </span>
-    </button>
-    <a class="navbar-brand" href="/">
-    weeqend </a>
-  </div>
-  <div id="navbar" class="navbar-collapse collapse">
-    <ul class="nav navbar-nav">
-       <li>
-      <% unless current_user %>
-      <a href="/users/sign_up">
-      Sign Up </a>
-      <% end %>
-      </li>
-      <li>
-        <% unless current_user %>
-        <a href="/users/sign_in">
-      Login </a>
-      <% end %>
-      </li>
-      <li>
-      <a class="active" href="/schedule">
-      Schedule </a>
-      </li>
-      <li>
-      <a href="/how-it-works">
-      How it works </a>
-      </li>
+  <div class="navi_container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+      <span class="sr-only">
+      Toggle navigation </span>
+      <span class="icon-bar">
+      </span>
+      <span class="icon-bar">
+      </span>
+      <span class="icon-bar">
+      </span>
+      </button>
+      <a class="navbar-brand" href="/">
+      weeqend </a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+          <% unless current_user %>
+          <a href="/users/sign_up">
+          Sign Up </a>
+          <% end %>
+        </li>
+        <li>
+          <% unless current_user %>
+          <a href="/users/sign_in">
+          Login </a>
+          <% end %>
+        </li>
+        <li>
+          <a class="active" href="/schedule">
+          Schedule </a>
+        </li>
+        <li>
+          <a href="/how-it-works">
+          How it works </a>
+        </li>
         <li>
           <% if current_user %>
           <%=link_to('Log Out', destroy_user_session_path, method:'delete')%>
           <% end %>
-      </li>
-    </ul>
+        </li>
+      </ul>
+    </div>
+    <!--/.nav-collapse -->
   </div>
   <!--/.nav-collapse -->
-</div>
-<!--/.nav-collapse -->
 </nav>
 <div class="gap">
 </div>
@@ -53,12 +53,12 @@
 </div>
 <div class="first_title">
   <p class=" wow fadeInDown">
-     SCHEDULE
+    SCHEDULE
   </p>
 </div>
 <div class="first_description">
   <p class=" wow fadeInDown">
-   
+    
   </p>
 </div>
 <div class="mini_gap">
@@ -66,26 +66,25 @@
 <div id="sh_carousel" class="carousel slide js-whole-carousel" data-interval="false">
   <!-- Carousel indicators -->
   <div class="carousel-indicators">
-    <div class=" wow fadeInLeft active btn eventime_button graybtn graytxt" data-target="#sh_carousel" >
-       Friday
+    <div class=" wow fadeInLeft active btn eventime_button graybtn graytxt js-friday-btn" data-target="#sh_carousel" >
+      Friday
     </div>
     <div class=" wow fadeInRight btn eventime_button graybtn graytxt js-saturday-btn" data-target="#sh_carousel" >
-        Saturday
+      Saturday
+    </div>
+    <div class=" wow fadeInRight btn eventime_button graybtn graytxt js-sunday-btn" data-target="#sh_carousel" >
+      Sunday
     </div>
     <div class=" wow fadeInRight btn eventime_button graybtn graytxt" data-target="#sh_carousel" >
-       Sunday
-    </div>
-    <div class=" wow fadeInRight btn eventime_button graybtn graytxt" data-target="#sh_carousel" >
-       Next Weekend
+      Next Weekend
     </div>
   </div>
   <!-- Carousel items -->
-<div class="carousel-inner">
-  <div class="active item">
-  <% @schedule.each do |event| %>
-  
-      <!-- DAY ONE -->
-      <div class="schedule_date wow fadeInLeft">
+  <div class="carousel-inner">
+    <div class="active item js-friday-carousel">
+      <% @schedule.each do |event| %>
+      
+          <div class="schedule_date wow fadeInLeft">
         <%= Chronic.parse('friday').day %>
       </div>
       <div class="schedule_month wow fadeInRight">
@@ -102,7 +101,8 @@
           <div class="accordion_left">
             <div class="accordions_titles_small">
               <p class="accordion_date">
-                 <%=event.start_time.strftime('%I:%M%p')%>-<%=event.end_time.strftime('%I:%M%p')%>
+                 <%=event.start_time.in_time_zone("Eastern Time (US & Canada)").strftime('%I:%M%p')%>
+                 - <%=event.end_time.in_time_zone("Eastern Time (US & Canada)").strftime('%I:%M%p')%>
               </p>
             </div>
           </div>
@@ -128,78 +128,31 @@
         <!-- Accordion item -->
         <div class="mini_gap">
         </div>
-        
-        <!-- End of the accordion -->
-      </div>
-
-<%end%>
-
+       </div> 
+      
+      <%end%>
       <!-- End of Friday -->
     </div>
     <div class="item js-saturday-carousel">
     </div>
     
-    <div class="item">
-      <!-- Sunday -->
-      <div class="schedule_date wow fadeInLeft">
-        <%= Chronic.parse('sunday').day %>
-      </div>
-      <div class="schedule_month wow fadeInRight">
-
-         <%= Date::MONTHNAMES[Chronic.parse('sunday').month] %>
-      <!-- Accordion item -->
-      <div class="mini_gap">
-      </div>
-      <div id="accordion3">
-        <div class="wow fadeInDown panel">
-          <a data-toggle="collapse" data-parent="#accordion3" href="#three_one">
-          <div class="accordion_left">
-            <div class="accordions_titles">
-              <p class="accordion_date">
-                 9:00-10:30 a.m.
-              </p>
-            </div>
-          </div>
-          <div class="accordion_right">
-            <div class="accordions_titles">
-              <div class="accordion_description">
-                <p>
-                   The role of designer in service design processes
-                </p>
-                <p class="name">
-                   Jenifer Wong - Designer, Iker Comp.
-                </p>
-              </div>
-            </div>
-          </div>
+    <div class="item js-sunday-carousel">
+        </div>
+        <!-- Carousel nav -->
+        <a class="left_arrow wow fadeInLeft" href="#sh_carousel" data-slide="prev">
+          <svg width="26px" height="48">
+            <polygon points="3.3,24.5 25.5,2.3 24,0.8 0.3,24.5 24,48.2 25.5,46.7"/>
+            </svg>
           </a>
+          <a class="right_arrow wow fadeInRight" href="#sh_carousel" data-slide="next">
+            <svg width="26px" height="48">
+              <polygon points="22.5,24.5 0.3,2.3 1.8,0.8 25.5,24.5 1.8,48.2 0.3,46.7"/>
+              </svg>
+            </a>
+            <div class="gap">
+            </div>
+          </div>
         </div>
-        <div id="three_one" class="panel-collapse collapse accordion_full">
-          <p>
-             Education as a model-designed service. E-services in the public sector. How to use the design process User Centered Design in design services? <br>
-            <br>
-            <b>Venue:</b> Yellow Hall
-          </p>
+        <!-- End Schedule -->
+        <div class="mini_gap">
         </div>
-        <!-- Accordion item -->
-        
-      <!-- End of the day -->
-    </div>
-    <!-- Carousel nav -->
-    <a class="left_arrow wow fadeInLeft" href="#sh_carousel" data-slide="prev">
-    <svg width="26px" height="48">
-    <polygon points="3.3,24.5 25.5,2.3 24,0.8 0.3,24.5 24,48.2 25.5,46.7"/>
-    </svg>
-    </a>
-    <a class="right_arrow wow fadeInRight" href="#sh_carousel" data-slide="next">
-    <svg width="26px" height="48">
-    <polygon points="22.5,24.5 0.3,2.3 1.8,0.8 25.5,24.5 1.8,48.2 0.3,46.7"/>
-    </svg>
-    </a>
-    <div class="gap">
-    </div>
-  </div>
-</div>
-<!-- End Schedule -->
-<div class="mini_gap">
-</div>

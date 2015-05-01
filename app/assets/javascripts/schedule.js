@@ -1,51 +1,18 @@
+$('.js-friday-btn').on('click', function(){
+
+	fetchSchedule('friday');
+
+	$('.js-whole-carousel').carousel(0)
+});
 $('.js-saturday-btn').on('click', function(){
-  var request = $.get('/api/myschedule/saturday')
 
-  request.done(function (schedule) {
-    schedule.forEach(function (event) {
-  $('.js-saturday-carousel').append('<div class="schedule_date wow fadeInLeft">\
-        2 RTCM\
-      </div>\
-      <div class="schedule_month wow fadeInRight">\
-        MAY RTCM\
-        \
-      </div>\
-      <!-- Accordion item -->\
-      <div class="mini_gap">\
-      </div>\
-      <div id="accordion1">\
-        <div class="panel wow fadeInDown">\
-          <a data-toggle="collapse" data-parent="#accordion1" href="#<%=event.id%>">\
-          <div class="accordion_left">\
-            <div class="accordions_titles_small">\
-              <p class="accordion_date">' + event.start_time + '-' + event.end_time + '\
-              </p>\
-            </div>\
-          </div>\
-          <div class="accordion_right">\
-           <div class="accordions_titles_small">\
-              <div class="accordion_description">\
-                <p>' + event.title + '</p>\
-              </div>\
-            </div>\
-          </div>\
-          </a>\
-        </div>\
-        <div id=' + event.id + 'class="panel-collapse collapse accordion_full">\
-          <p>' + event.description + '<a href="multi-reservation.html" class="schedule_reservation wow btn eventime_button">\
-           Make Reservation</a>\
-          </p>\
-        </div>\
-        <!-- Accordion item -->\
-        <div class="mini_gap">\
-        </div>\
-        \
-        <!-- End of the accordion -->\
-      </div>')
-  });
-  })
+  fetchSchedule('saturday');
 
-	
+  $('.js-whole-carousel').carousel(1)
+});
+$('.js-sunday-btn').on('click', function(){
 
-	$('.js-whole-carousel').carousel('next')
+  fetchSchedule('sunday');
+
+  $('.js-whole-carousel').carousel(2)
 });
