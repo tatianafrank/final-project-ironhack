@@ -8,28 +8,5 @@ Rails.application.routes.draw do
   
   get '/myschedule' => 'schedule#my_schedule'
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   get 'api/myschedule/:day' => 'api/schedule#my_schedule'
 end
