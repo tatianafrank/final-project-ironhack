@@ -2,7 +2,7 @@ class Api::ScheduleController < ApplicationController
 	def my_schedule
 		#weekend day from api url from button request
 		day=params[:day]
-		user= User.find_by_id(user.id)
+		user= current_user
 		
 		if day=="sunday" && Date::DAYNAMES[DateTime.now.wday] == 'sunday'
 			daydate=Chronic.parse('today 19:00')

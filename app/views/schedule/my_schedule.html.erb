@@ -80,6 +80,8 @@
     </div>
   </div>
   <!-- Carousel items -->
+
+
   <div class="carousel-inner">
     <div class="active item js-friday-carousel">
       <% @schedule.each do |event| %>
@@ -88,9 +90,7 @@
         <%= Chronic.parse('friday').day %>
       </div>
       <div class="schedule_month wow fadeInRight">
-
-         <%= Date::MONTHNAMES[Chronic.parse('friday').month] %>
-        
+         <%= Date::MONTHNAMES[Chronic.parse('friday').month] %>      
       </div>
       <!-- Accordion item -->
       <div class="mini_gap">
@@ -101,8 +101,8 @@
           <div class="accordion_left">
             <div class="accordions_titles_small">
               <p class="accordion_date">
-                 <%=event.start_time.in_time_zone("Eastern Time (US & Canada)").strftime('%I:%M%p')%>
-                 - <%=event.end_time.in_time_zone("Eastern Time (US & Canada)").strftime('%I:%M%p')%>
+                 <%=event.start_time.in_time_zone("Eastern Time (US & Canada)").strftime('%l:%M%P')%>
+                 - <%=event.end_time.in_time_zone("Eastern Time (US & Canada)").strftime('%l:%M%P')%>
               </p>
             </div>
           </div>
@@ -121,8 +121,16 @@
         <div id="<%=event.id%>" class="panel-collapse collapse accordion_full">
           <p>
             <%=event.description%>
-            <a href="multi-reservation.html" class="schedule_reservation wow btn eventime_button">
-           Make Reservation</a>
+            <div title="Add to Calendar" class="addthisevent">
+                Add to Calendar
+                <span class="start"><%=event.start_time.strftime('%m/%d/%y')%> <%=event.start_time.strftime('%H:%M%P')%></span>
+                <span class="end"><%=event.end_time.strftime('%m/%d/%y')%> <%=event.end_time.strftime('%H:%M%P')%></span>
+                <span class="timezone">America/New_York</span>
+                <span class="title"><%=event.title%></span>
+                <span class="description"><%=event.description%></span>
+                <span class="location"><%=event.location%></span>
+                <span class="date_format">MM/DD/YYYY</span>
+            </div>
           </p>
         </div>
         <!-- Accordion item -->

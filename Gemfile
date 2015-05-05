@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'momentjs-rails', '~> 2.9.0'
 gem 'faker'
 gem 'chronic'
 gem 'devise'
