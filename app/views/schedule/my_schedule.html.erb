@@ -86,16 +86,16 @@
     <div class="active item js-friday-carousel">
       <% @schedule.each do |event| %>
       
-          <div class="schedule_date wow fadeInLeft">
+          <div class="schedule_date wow fadeInLeft js-erase-me">
         <%= Chronic.parse('friday').day %>
       </div>
-      <div class="schedule_month wow fadeInRight">
+      <div class="schedule_month wow fadeInRight js-erase-me">
          <%= Date::MONTHNAMES[Chronic.parse('friday').month] %>      
       </div>
       <!-- Accordion item -->
-      <div class="mini_gap">
+      <div class="mini_gap js-erase-me">
       </div>
-      <div id="accordion1">
+      <div id="accordion1" class="specialDiv">
         <div class="panel wow fadeInDown">
           <a data-toggle="collapse" data-parent="#accordion1" href="#<%=event.id%>">
           <div class="accordion_left">
@@ -127,10 +127,11 @@
                 <span class="end"><%=event.end_time.strftime('%m/%d/%y')%><%=event.end_time.strftime('%H:%M%P')%></span>
                 <span class="timezone">America/New_York</span>
                 <span class="title"><%=event.title%></span>
-                <span class="description"><%=event.description%></span>
+                <span class="description"><%=event.description.html_safe %></span>
                 <span class="location"><%=event.location%></span>
                 <span class="date_format">MM/DD/YYYY</span>
             </div>
+            <button class="js-more-options" data-id='<%=event.id%>' > Replace  </button>
           </p>
         </div>
         <!-- Accordion item -->

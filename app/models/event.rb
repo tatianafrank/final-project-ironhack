@@ -41,6 +41,16 @@ class Event < ActiveRecord::Base
 	    end
     end
 
+    def replacement(user)
+		start=self.start_time
+		event=Event.includes(:tags)
+		  	.where(tags: { id: user.tags })
+		  	.where('start_time >= ?', start)
+			.where('start_time <= ?', start + 1.hour)
+			.where('events.id != ?', self.id).first
+		return event
+    end
+
      
 end
 

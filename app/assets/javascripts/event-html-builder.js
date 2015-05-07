@@ -1,16 +1,16 @@
 function eventHtmlBuilder (event) {
-	return '<div class="schedule_date wow fadeInLeft">' + moment(event.start_time).format("D")+ '\
+	return '<div class="schedule_date wow fadeInLeft js-erase-me">' + moment(event.start_time).format("D")+ '\
             </div>\
-            <div class="schedule_month wow fadeInRight">\
+            <div class="schedule_month wow fadeInRight js-erase-me">\
 		        ' + moment(event.start_time).format("MMM") + '\
 		        \
 	        </div>\
 	        <!-- Accordion item -->\
-	        <div class="mini_gap">\
+	        <div class="mini_gap js-erase-me">\
 	        </div>\
-      	    <div id="accordion1">\
+      	    <div id="accordion1" class="specialDiv">\
        			<div class="panel wow fadeInDown">\
-          			<a data-toggle="collapse" data-parent="#accordion1" href="#' +event.id+'">\
+          			<a data-toggle="collapse" data-parent="#accordion1" href="#' + event.id +'">\
 	      				<div class="accordion_left">\
 		       				<div class="accordions_titles_small">\
 		          				<p class="accordion_date">' + moment(event.start_time).tz('America/New_York').format("h:mmA") + ' ' + '-' + ' ' + moment(event.end_time).tz('America/New_York').format("h:mmA") + '\
@@ -37,6 +37,7 @@ function eventHtmlBuilder (event) {
 					    <span class="location">'+ event.location + '</span>\
 					    <span class="date_format">' + moment(event.start_time).tz('America/New_York').format('L') + '</span>\
 					</div>\
+					<button class="js-more-options" data-id="' + event.id +'"> Replace Event </button>\
           			</p>\
         		</div>\
         		<!-- Accordion item -->\

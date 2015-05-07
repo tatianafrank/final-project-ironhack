@@ -10,8 +10,7 @@ class Api::ScheduleController < ApplicationController
 		elsif day=="saturday" && Date::DAYNAMES[DateTime.now.wday] == 'saturday'
 			daydate=Chronic.parse('today 8:00')
 		elsif day=="friday" && Date::DAYNAMES[DateTime.now.wday] == 'friday'
-			#then the day that events are queried for is Friday
-			#chronic is a gem that gives uses day names and finds next soonest
+		
 			daydate=Chronic.parse('today 19:00')
 		elsif day=="friday" 
 			daydate=Chronic.parse('friday 19:00')
@@ -22,6 +21,12 @@ class Api::ScheduleController < ApplicationController
 		schedule=Event.schedule_for(daydate, user)
 		render json: schedule
 
+	end
+
+	def replace
+    	original_event=Event.find_by_id(params[:id])
+		new_event= original_event.replacement(current_user)
+    	render json: new_event
 	end
 
 end

@@ -13,7 +13,13 @@ function fetchSchedule (day) {
       $('.js-' + day + '-carousel').append(eventHtmlBuilder(event))
 
     });
+  $('.js-' + day + '-carousel').find('.js-more-options').click(replaceClick);
     //used for addthisevent api to refresh the code on AJAX calls
     addthisevent.refresh();
   });
+
+   
+    // save html to do stuff with it in jquery
+    // find the button inside new html to add the same click to it
+
 }
