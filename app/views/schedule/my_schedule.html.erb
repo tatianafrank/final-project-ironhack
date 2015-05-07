@@ -124,7 +124,7 @@
             <div title="Add to Calendar" class="addthisevent">
                 Add to Calendar
                 <span class="start"><%=event.start_time.strftime('%m/%d/%y')%> <%=event.start_time.strftime('%H:%M%P')%></span>
-                <span class="end"><%=event.end_time.strftime('%m/%d/%y')%> <%=event.end_time.strftime('%H:%M%P')%></span>
+                <span class="end"><%=event.end_time.strftime('%m/%d/%y')%><%=event.end_time.strftime('%H:%M%P')%></span>
                 <span class="timezone">America/New_York</span>
                 <span class="title"><%=event.title%></span>
                 <span class="description"><%=event.description%></span>

@@ -19,7 +19,10 @@ class Api::ScheduleController < ApplicationController
 		end
 		#query for events using the name of the weekend day and the signed in user's preferences
 		schedule=Event.schedule_for(daydate, user)
+		puts 'LOOOOKKKK!!!!!:'
+		puts daydate
 		render json: schedule
+
 	end
 
 end
