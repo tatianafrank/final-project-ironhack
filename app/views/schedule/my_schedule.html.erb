@@ -120,7 +120,7 @@
         </div>
         <div id="<%=event.id%>" class="panel-collapse collapse accordion_full">
           <p>
-            <%=event.description%>
+            <%= event.description.html_safe %>
             <div title="Add to Calendar" class="addthisevent">
                 Add to Calendar
                 <span class="start"><%=event.start_time.strftime('%m/%d/%y')%> <%=event.start_time.strftime('%H:%M%P')%></span>
