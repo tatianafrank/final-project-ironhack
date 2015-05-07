@@ -13,7 +13,7 @@ function eventHtmlBuilder (event) {
           			<a data-toggle="collapse" data-parent="#accordion1" href="#' +event.id+'">\
 	      				<div class="accordion_left">\
 		       				<div class="accordions_titles_small">\
-		          				<p class="accordion_date">' + moment(event.start_time).format("h:mm A") + '-' + moment(event.end_time).format("h:mm A") + '\
+		          				<p class="accordion_date">' + moment(event.start_time).tz('America/New_York').format("h:mmA") + ' ' + '-' + ' ' + moment(event.end_time).tz('America/New_York').format("h:mmA") + '\
 		          				</p>\
 		        			</div>\
 	      				</div>\
@@ -29,13 +29,13 @@ function eventHtmlBuilder (event) {
         		<div id="' + event.id + '" class="panel-collapse collapse accordion_full">\
           			<p>' + event.description + '<div title="Add to Calendar" class="addthisevent">\
 					    Add to Calendar\
-					    <span class="start">' + moment(event.start_time).format('L') + ' ' + moment(event.start_time).format('H:mm A') + '</span>\
-					    <span class="end">' + moment(event.end_time).format('L') + ' ' + moment(event.end_time).format('H:mm A') + '</span>\
+					    <span class="start">' + moment(event.start_time).tz('America/New_York').format('L') + ' ' + moment(event.start_time).tz('America/New_York').format('H:mm A') + '</span>\
+					    <span class="end">' + moment(event.end_time).tz('America/New_York').format('L') + ' ' + moment(event.end_time).tz('America/New_York').format('H:mm A') + '</span>\
 					    <span class="timezone">America/New_York</span>\
 					    <span class="title">' + event.title + '</span>\
 					    <span class="description">'+ event.description +'</span>\
 					    <span class="location">'+ event.location + '</span>\
-					    <span class="date_format">' + moment(event.start_time).format('L') + '</span>\
+					    <span class="date_format">' + moment(event.start_time).tz('America/New_York').format('L') + '</span>\
 					</div>\
           			</p>\
         		</div>\
