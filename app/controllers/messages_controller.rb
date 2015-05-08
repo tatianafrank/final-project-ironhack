@@ -6,21 +6,12 @@ class MessagesController < ApplicationController
 				r.Message 'Hello. Would you like to see plans for this weekend?'
 			else
 				if params[:Body]=='yes' || params[:Body]=='friday'
-					schedule=[]
-					next_available= Chronic.parse('friday 18:00')
-					loop do
-						event=Event.where('start_time >= ?', next_available)
-						.where('start_time <= ?', next_available.tomorrow-15.hours).first	
-						if event.nil?
-							break
-						end
-					end
-						schedule.push(event)
-						next_available = event.end_time
-					r.Message 'Here are some events for this Friday. For Saturday or Sunday events, text back "saturday" or "sunday"
-						<%schedule.each do |event|%><%=event.start_time.in_time_zone("Eastern Time (US & Canada)").strftime("%l:%M%p")%>
+					schedule=Event.schedule_for(daydate)
+					message=" "
+					<% schedule.each do |event| %> message += <%= event.start_time.in_time_zone("Eastern Time (US & Canada)").strftime("%l:%M%p")%>
 	                   - <%=event.end_time.in_time_zone("Eastern Time (US & Canada)").strftime("%l:%M%p")%> - <%=event.title%> - <%=event.location%>
-	                   <%end%>'
+	                <%end%>
+					r.Message 'Here are some events for this Friday. For Saturday or Sunday events, text back "saturday" or "sunday"' + message
 				elsif params[:Body]=='saturday'
 					r.Message 'Here are some events for this Saturday. For Friday or Sunday events, text back "friday" or "sunday"
 					5:00- Golf Tournament- 700 Broadway Ny, NY

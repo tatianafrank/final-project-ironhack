@@ -6,12 +6,16 @@ class Event < ActiveRecord::Base
 		schedule = []
 		next_available= daydate
 		loop do
-		  event=Event.includes(:tags)
-		  	.where(tags: { id: user.tags })
-		  	.where('start_time >= ?', next_available)
-			.where('start_time <= ?', daydate.tomorrow-15.hours )
-			.first
-
+			if user
+			  	event=Event.includes(:tags)
+			  	.where(tags: { id: user.tags })
+			  	.where('start_time >= ?', next_available)
+				.where('start_time <= ?', daydate.tomorrow-15.hours )
+				.first
+			else
+				 event=Event.where('start_time >= ?', next_available)
+				.where('start_time <= ?', daydate.tomorrow-15.hours )
+				.first
 			if event.nil?
 				break
 			end
