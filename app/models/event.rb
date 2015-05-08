@@ -2,20 +2,20 @@ class Event < ActiveRecord::Base
 	has_and_belongs_to_many :users
 	has_and_belongs_to_many :tags
 
-	def self.schedule_for(daydate, user)
+	def self.schedule_for(daydate, user = nil)
 		schedule = []
 		next_available= daydate
+
 		loop do
-			if user
-			  	event=Event.includes(:tags)
-			  	.where(tags: { id: user.tags })
-			  	.where('start_time >= ?', next_available)
-				.where('start_time <= ?', daydate.tomorrow-15.hours )
-				.first
-			else
-				 event=Event.where('start_time >= ?', next_available)
-				.where('start_time <= ?', daydate.tomorrow-15.hours )
-				.first
+		  event=Event
+		  	.where('start_time >= ?', next_available)
+			.where('start_time <= ?', daydate.tomorrow-15.hours )
+			.first #might have to move
+
+		  if user.present?
+		  	event = event.includes(:tags).where(tags: { id: user.tags })
+		  end
+
 			if event.nil?
 				break
 			end
@@ -54,6 +54,11 @@ class Event < ActiveRecord::Base
 			.where('events.id != ?', self.id).first
 		return event
     end
+
+    def self.dateSearch(date)
+	  where("location like ?", "%#{location}%") 
+	end
+
 
      
 end

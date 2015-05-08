@@ -8,9 +8,15 @@ class EventsController < ApplicationController
 		@event.save 
 	end
 	def index
-		@events=Event.order(:start_date, 'RANDOM()')
+	  if params[:search]
 		@user=current_user
+	    @users = User.search(params[:search]).order("created_at DESC")
+	  else
+		@events=Event.order(:start_date, 'RANDOM()')
 	end
 	def show
+	end
+	def search
+		render 'search'
 	end
 end

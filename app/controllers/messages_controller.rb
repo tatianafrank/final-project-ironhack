@@ -8,10 +8,11 @@ class MessagesController < ApplicationController
 				if params[:Body]=='yes' || params[:Body]=='friday'
 					schedule=Event.schedule_for(daydate)
 					message=" "
-					<% schedule.each do |event| %> message += <%= event.start_time.in_time_zone("Eastern Time (US & Canada)").strftime("%l:%M%p")%>
-	                   - <%=event.end_time.in_time_zone("Eastern Time (US & Canada)").strftime("%l:%M%p")%> - <%=event.title%> - <%=event.location%>
-	                <%end%>
-					r.Message 'Here are some events for this Friday. For Saturday or Sunday events, text back "saturday" or "sunday"' + message
+					   schedule.each do |event|
+					    message += "#{event.start_time.in_time_zone("Eastern Time (US & Canada)").strftime("%l:%M%p")}
+	                   - #{event.end_time.in_time_zone("Eastern Time (US & Canada)").strftime("%l:%M%p")} - #{event.title} - #{event.location}"
+	                	end
+						r.Message 'Here are some events for this Friday. For Saturday or Sunday events, text back "saturday" or "sunday"' + message
 				elsif params[:Body]=='saturday'
 					r.Message 'Here are some events for this Saturday. For Friday or Sunday events, text back "friday" or "sunday"
 					5:00- Golf Tournament- 700 Broadway Ny, NY

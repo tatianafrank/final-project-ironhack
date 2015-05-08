@@ -18,6 +18,9 @@
   </div>
   <div id="navbar" class="navbar-collapse collapse">
     <ul class="nav navbar-nav">
+      <li>
+        <a><%=current_user.firstname%></a>
+      </li>
         <li>
       <% unless current_user %>
       <a href="/users/sign_up">
@@ -58,13 +61,13 @@
 <div class="first_line wow fadeInDown">
 </div>
 <div class="first_title">
-  <p class="action wow fadeInDown">
-     <%= current_user.firstname %>
-  </p>
+
 <p>
 </p>
 <div class=" wow fadeInLeft active btn eventime_button graybtn graytxt">
  <%=link_to('your weeqend', myschedule_path)%>
     </div>
 
+   
+</div>
 
