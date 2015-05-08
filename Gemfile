@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'twilio-ruby', '~> 4.1.0'
+gem 'rails_12factor', group: :production
 gem 'momentjs-rails', '~> 2.9.0'
 gem 'eventfulapi'
 gem 'faker'

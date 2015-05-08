@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/myschedule' => 'schedule#my_schedule'
   get 'api/myschedule/:day' => 'api/schedule#my_schedule'
   get 'api/event/:id/replace' => 'api/schedule#replace'
+  get '/messages' => 'messages#reply'
   post '/messages' => 'messages#reply'
 
 end
