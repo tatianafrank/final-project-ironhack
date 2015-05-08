@@ -14,6 +14,7 @@ class MessagesController < ApplicationController
 						if event.nil?
 							break
 						end
+					end
 						schedule.push(event)
 						next_available = event.end_time
 					r.Message 'Here are some events for this Friday. For Saturday or Sunday events, text back "saturday" or "sunday"
