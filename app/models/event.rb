@@ -41,6 +41,7 @@ class Event < ActiveRecord::Base
 		     	 end_time= event['stop_time']
 		     	end
 		    unless Event.find_by(efid: event['id'])
+		    	puts "Importing Eventful event ##{event['id']}"
 	      		Event.create(title: title, description: description, location: location, start_time: start_time, end_time: end_time, efid: efid).tags.push(tag)
 	    	end
 	    end
