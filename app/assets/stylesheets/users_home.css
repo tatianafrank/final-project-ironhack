@@ -26,12 +26,12 @@
 
 #users-home-text{
     font-size: 38px;
-    color: fff;
-!important}
+    color: #fff !important;
+}
 
 #users-home-tags{
     font-size: 38px;
-    color: 00ffff;
+    color: #00ffff !important;
 }
 
 .your-large-wrapper  {
