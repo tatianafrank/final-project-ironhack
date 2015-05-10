@@ -16,13 +16,16 @@ class EventsController < ApplicationController
 	def search
 		time=[Chronic.parse('friday'), Chronic.parse('saturday'), Chronic.parse('sunday'), Chronic.parse('next friday'), Chronic.parse('next saturday'), Chronic.parse('next sunday')]
 		@date=time.map{|date| [date.strftime("%A%B%e"), date]}
-		dateSearch=params[:dates].to_datetime
-		@event=Event.joins(:tags).where(tags: {id: params[:tags]}).where(start_time: dateSearch.beginning_of_day...dateSearch.to_datetime.end_of_day)
+
+		if params[:dates] && params[:tags]
+			dateSearch=params[:dates].to_datetime
+			@event=Event.joins(:tags).where(tags: {id: params[:tags]}).where(start_time: dateSearch.beginning_of_day...dateSearch.to_datetime.end_of_day)
+		else
+			@event=[]
+		end
 
 		render 'search'
 	end
-	def results
-	  Event.locationSearch(params[:location]).dateSearch(params[:date]).tagSearch(params[:tag])
-  end
 end
+
 
