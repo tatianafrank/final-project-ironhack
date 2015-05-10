@@ -8,15 +8,21 @@ class EventsController < ApplicationController
 		@event.save 
 	end
 	def index
-	  if params[:search]
-		@user=current_user
-	    @users = User.search(params[:search]).order("created_at DESC")
-	  else
 		@events=Event.order(:start_date, 'RANDOM()')
+		@user=current_user
 	end
 	def show
 	end
 	def search
+		time=[Chronic.parse('friday'), Chronic.parse('saturday'), Chronic.parse('sunday'), Chronic.parse('next friday'), Chronic.parse('next saturday'), Chronic.parse('next sunday')]
+		@date=time.map{|date| [date.strftime("%A%B%e"), date]}
+		dateSearch=params[:dates].to_datetime
+		@event=Event.joins(:tags).where(tags: {id: params[:tags]}).where(start_time: dateSearch.beginning_of_day...dateSearch.to_datetime.end_of_day)
+
 		render 'search'
 	end
+	def results
+	  Event.locationSearch(params[:location]).dateSearch(params[:date]).tagSearch(params[:tag])
+  end
 end
+

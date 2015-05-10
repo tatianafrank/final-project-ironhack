@@ -1,1 +1,11 @@
-search.html.erb
+<br>
+<br>
+<%= form_tag(search_path, :method => "get", id: "search-form") do %>
+ <%=select_tag("dates", options_for_select(@date, params[:dates]))%>
+  <%= select_tag("tags",  options_from_collection_for_select(Tag.all, :id, :name, params[:tags])) %>
+  <%= submit_tag "Search", :name => nil %>
+<% end %>
+
+<% @event.each do |result| %>
+<%= result.title %><br>
+<%end%>

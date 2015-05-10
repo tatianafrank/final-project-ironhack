@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
 				session[:have_messaged] = true
 				r.Message 'Hello. Would you like to see plans for this weekend?'
 			else
-				if params[:Body]=='yes' || params[:Body]=='friday'
+				if params[:Body].downcase =='yes' || params[:Body]=='friday'
 					schedule=Event.schedule_for(daydate)
 					message=" "
 					   schedule.each do |event|

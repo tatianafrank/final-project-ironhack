@@ -10,11 +10,12 @@ class Event < ActiveRecord::Base
 		  event=Event
 		  	.where('start_time >= ?', next_available)
 			.where('start_time <= ?', daydate.tomorrow-15.hours )
-			.first #might have to move
+		
 
 		  if user.present?
 		  	event = event.includes(:tags).where(tags: { id: user.tags })
 		  end
+		  event=event.first
 
 			if event.nil?
 				break

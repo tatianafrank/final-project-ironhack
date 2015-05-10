@@ -36,7 +36,7 @@
       </li>
       <li>
       <a href="/schedule">
-      Schedule </a>
+      Search </a>
       </li>
       <li>
       <a href="/how-it-works">
@@ -55,19 +55,22 @@
 <!--/.nav-collapse -->
 </nav>
 
-
 <div class="gap">
 </div>
-<div class="first_line wow fadeInDown">
-</div>
-<div class="first_title">
 
-<p>
-</p>
+
+<div id= "users-home-text">
+You are</div>
+<% current_user.tags.each do |tag| %>
+<div id="users-home-tags"><%= tag.name %></div>
+<%end%>
+
+
+
 <div class=" wow fadeInLeft active btn eventime_button graybtn graytxt">
  <%=link_to('your weeqend', myschedule_path)%>
     </div>
 
+<img class="back" src="/assets/colors.jpg">
    
-</div>
 

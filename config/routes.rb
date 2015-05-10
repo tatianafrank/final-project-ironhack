@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   get '/messages' => 'messages#reply'
   post '/messages' => 'messages#reply'
   get '/search' => 'events#search'
+ 
 
 end
