@@ -41,3 +41,5 @@ gans.tags.push(tag3)
 rave=Event.create(title:'Late Night Rave', description: 'Dont stop till the sun rises!', location: 'Ravetown New York, NY 10001', start_time: 'Sat, 16 May 2015 22:00:00 -0400', end_time: 'Sun, 17 May 2015 2:00:00 -0400')
 rave.tags.push(tag5)
 rave.tags.push(tag3)
+
+# {description: "sdlfsdfksdfksdjlfkj", start_time: "2015-05-16 12:00:00", end_time: "2015-05-16 14:00:00", title: "Blah Blah Blah", location: "Ground Floor Gallery"}

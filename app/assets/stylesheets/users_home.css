@@ -12,7 +12,7 @@ height: 100%;
 background-size: cover;  
 }
 
-@media all and (max-width: 1024px) {   
+@media all and (max-width: 2500px) {   
   .landing-back {
 
     height: 100%;
@@ -29,7 +29,7 @@ height: 100%;
 background-size: cover;
 }
 
-@media all and (max-width: 1024px) {   
+@media all and (max-width: 2500px) {   
   .back {
 
     height: 100%;
@@ -57,7 +57,7 @@ background-size: cover;
   background-size: cover;
 }
 
-@media (max-width: 1500px) {   
+@media (max-width: 2500px) {   
   .tags-back {
     height: 100%;
     width: 100%;
