@@ -26,6 +26,9 @@ class EventsController < ApplicationController
 
 		render 'search'
 	end
+	def addevent
+		render 'addEvent'
+	end
 end
 
 
