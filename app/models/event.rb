@@ -9,7 +9,7 @@ class Event < ActiveRecord::Base
 		loop do
 		  event=Event
 		  	.where('start_time >= ?', next_available)
-			.where('start_time <= ?', daydate.tomorrow-15.hours )
+			.where('start_time <= ?', daydate.tomorrow )
 		
 
 		  if user.present?
