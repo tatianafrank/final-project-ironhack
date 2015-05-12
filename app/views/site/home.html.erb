@@ -1,59 +1,8 @@
-
-<!-- Fixed navbar -->
-<nav class="navbar navbar-fixed-top nav_mask">
-<div class="navi_container">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-    <span class="sr-only">
-    Toggle navigation </span>
-    <span class="icon-bar">
-    </span>
-    <span class="icon-bar">
-    </span>
-    <span class="icon-bar">
-    </span>
-    </button>
-    <a class="navbar-brand" href="/">
-    weeqend </a>
-  </div>
-  <div id="navbar" class="navbar-collapse collapse">
-    <ul class="nav navbar-nav">
-        <li>
-      <% unless current_user %>
-      <a href="/users/sign_up">
-      Sign Up </a>
-      <% end %>
-      </li>
-      <li>
-        <% unless current_user %>
-        <a href="/users/sign_in">
-      Login </a>
-      <% end %>
-      </li>
-      <li>
-      <a href="/schedule">
-      Schedule </a>
-      </li>
-      <li>
-      <a href="/how-it-works">
-      How it works </a>
-      </li>
-        <li>
-          <% if current_user %>
-          <%=link_to('Log Out', destroy_user_session_path, method:'delete')%>
-      
-          <% end %>
-      </li>
-    </ul>
-  </div>
-  <!--/.nav-collapse -->
-</div>
-<!--/.nav-collapse -->
-</nav>
 <header id="home_slider" class="carousel slide">
 <!-- Wrapper for Slides -->
 <div class="carousel-inner">
-  <img class="back" src="/assets/colors.jpg">
+<div class="landing-back">
+  
 
   <div class="item active ">
     <!-- Set the first background image using inline CSS below. -->
@@ -63,31 +12,15 @@
       <div class="description ">
         <h2 class="details wow fadeInDown">
         Your weekend curated in one click </h2>
-        <div class="details wow fadeInUp">
-          <p>
-            <%=link_to('Sign up for a more personalized one-click weekend', new_user_registration_path)%>
-          </p>
-        </div>
-  
-
-      
+        
         <div class="buttons ">
-          <span class="details wow fadeInLeft unlock-button">Unlock your city</span><br>
+          <!-- <span class="details wow fadeInLeft unlock-button">Unlock your city</span><br> -->
           <a class="wow fadeInLeft btn eventime_button" href="/users/sign_up" role="button">
          New York </a> 
-         <!--  <a class="wow fadeInRight btn eventime_button" href="/users/sign_up" role="button">
-          Sign Up </a> -->
         </div>
       </div>
     </div>
   </div>
-  <div class="item">
-    <!-- Set the first background image using inline CSS below. -->
+</div>
     
-</header>
-<!-- Scripts -->
-<script type="text/javascript" src="assets/javascripts/jquery-2.1.3.js"></script>
-<script type="text/javascript" src="assets/javascripts/bootstrap.min.js"></script>
-<script type="text/javascript" src="assets/javascripts/minify.js"></script>
-</body>
-</html>
+    

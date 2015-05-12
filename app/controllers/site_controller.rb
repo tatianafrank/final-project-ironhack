@@ -1,7 +1,7 @@
 class SiteController < ApplicationController
 	def home
 		if user_signed_in? && current_user.tags.size > 0
-			render 'users_home'
+			redirect_to '/myschedule'
 		elsif user_signed_in?
 			@tags = Tag.all
 			render 'user_home'

@@ -1,37 +1,199 @@
+.searchResult{
+  color: #fff;
+  font-size: 30px;
+
+}
+
+
+.landing-back{
+background: url('/assets/colors.jpg') ;
+background-repeat: no-repeat;
+height: 100%;
+background-size: cover;  
+}
+
+@media all and (max-width: 1024px) {   
+  .landing-back {
+
+    height: 100%;
+    background-size: cover;
+
+  }
+}
+
 .back{
-  position: fixed;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
+  
+background: url('/assets/leaves.jpg') ;
+background-repeat: no-repeat;
+height: 100%;
+background-size: cover;
+}
 
-}
-.back img{
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  min-width: 50%;
-  min-height: 50%;
-}
-/*
-@media screen and (max-width: 1024px) {  Specific to this particular image 
+@media all and (max-width: 1024px) {   
   .back {
-    left: 50%;
-    margin-left: -512px;   /* 50% */
-/*  }
-}*/
 
-#users-home-text{
-    font-size: 38px;
-    color: #fff !important;
+    height: 100%;
+    background-size: cover;
+
+
+  }
+}
+.tags-content input{
+  color: #000;
 }
 
-#users-home-tags{
+.tags-content{
+ 
+  color: #fff;
+  margin: 0 auto;
+
+}
+
+
+.tags-back{
+  background: url('/assets/paris1.jpg');
+  height:100%;
+  width: 100%;
+  background-size: cover;
+}
+
+@media (max-width: 1500px) {   
+  .tags-back {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+  }
+
+  .tags-content{
+     margin: 0 auto;
+     padding-top: 20%;
+     width: 30%;
+     padding-left: 11%;
+     
+  }
+}
+
+@media (max-width: 800px){
+
+  .tags-content{
+    margin: 0;
+   /* padding: 50% 0% 50% 30%;
+    width: 70%;*/
+    width: 100%;
+    padding-left: 45%;
+    padding-top: 45%
+  }
+    .tags-back {
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+  }
+}
+.user-back{
+  background: url('/assets/colors.jpg') ;
+background-repeat: no-repeat;
+height: 100%;
+background-size: cover;
+}
+
+@media all and (max-width: 1024px) {   
+  .user-back {
+
+    height: 100%;
+    background-size: cover;
+
+  }
+}
+
+.content-all{
+  margin-left: 30%;
+  padding-top: 30%;
+
+}
+
+.content-all a{
+  padding: 5%;
+  color: #fff;
+}
+
+
+
+.search-back{
+  
+background: url('/assets/citylights.jpg') ;
+background-repeat: no-repeat;
+height: 100%;
+background-size: cover;
+}
+
+@media all and (max-width: 1024px) {   
+  .search-back {
+
+    height: 100%;
+    background-size: cover;
+
+  }
+}
+
+#dates{
+  width:25%;
+  margin: 1%;
+}
+
+#tags{
+  width:25%;
+  margin: 1%;
+}
+
+#search-btn{
+    color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid;
+  border-radius: 4px;
+
+}
+
+.sign-up-form{
+  margin-left: 40%;
+ padding-top: 6%;
+ color: #fff;
+
+}
+
+.sign-up-form a{
+  color: #fff;
+  display: inline;
+}
+
+.sign-up-form input{
+  color: black;
+}
+.actions{
+  padding-top: 2%;
+  color: black;
+}
+
+.users-home-text{
+  /*padding-top:10%;*/
     font-size: 38px;
-    color: #00ffff !important;
+    color: #fff;
+}
+
+.users-home-tags{
+    font-size: 38px;
+    color: #00ffff ;
 }
 
 .your-large-wrapper  {

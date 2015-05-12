@@ -15,6 +15,19 @@ namespace :weeqend do
     Event.import_eventful(results, tag)
     end 
   end
+
+
+  desc "Import events from eventful"
+  task import_eventbrite: :environment do
+    # eventSearch= Tag.all
+    # eventSearch.each do |tag|
+    appKey= {app_key: 'WMFRPMJNWFYT57ZBIN'}
+    eventbrite = EventbriteClient.new(appKey)
+    # hash = JSON.parse('json string')
+    response= Faraday.get 'https://www.eventbriteapi.com/v3/events/search/?token=O6MQ6EAQTEUY4QR7OQ2U&q=hell&venue.city=New%20York'
+    p response
+                     
+  end
 end
 
 

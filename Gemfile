@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'eventbrite-client', :git => 'https://github.com/tatianafrank/eventbrite-client.rb.git'
 gem 'twilio-ruby', '~> 4.1.0'
 gem 'rails_12factor', group: :production
 gem 'momentjs-rails', '~> 2.9.0'

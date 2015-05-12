@@ -9,18 +9,14 @@ class MessagesController < ApplicationController
 					schedule=Event.schedule_for(Chronic.parse('friday'))
 					message=" "
 					   schedule.each do |event|
-					    message += "
-					    #{event.start_time.in_time_zone("Eastern Time (US & Canada)").strftime("%l:%M%p")}
-	                   - #{event.end_time.in_time_zone("Eastern Time (US & Canada)").strftime("%l:%M%p")} - #{event.title} - #{event.location}"
+					    message += "#{event.start_time.in_time_zone("Eastern Time (US & Canada)").strftime("%l:%M%p")} - #{event.end_time.in_time_zone("Eastern Time (US & Canada)").strftime("%l:%M%p")} - #{event.title} - #{event.location}"
 	                	end
 						r.Message 'Here are some events for this Friday. For Saturday or Sunday events, text back "saturday" or "sunday"' + message
 				elsif params[:Body]=='saturday'
 					schedule=Event.schedule_for(Chronic.parse('saturday'))
 					message=" "
 					   schedule.each do |event|
-					    message += "
-					    #{event.start_time.in_time_zone("Eastern Time (US & Canada)").strftime("%l:%M%p")}
-	                   - #{event.end_time.in_time_zone("Eastern Time (US & Canada)").strftime("%l:%M%p")} - #{event.title} - #{event.location}"
+					    message += "#{event.start_time.in_time_zone("Eastern Time (US & Canada)").strftime("%l:%M%p")} - #{event.end_time.in_time_zone("Eastern Time (US & Canada)").strftime("%l:%M%p")} - #{event.title} - #{event.location}"
 					   end
 					r.Message 'Here are some events for this Saturday. For Friday or Sunday events, text back "friday" or "sunday"'
 
@@ -29,8 +25,7 @@ class MessagesController < ApplicationController
 					message=" "
 					   schedule.each do |event|
 					    message += "
-					    #{event.start_time.in_time_zone("Eastern Time (US & Canada)").strftime("%l:%M%p")}
-	                   - #{event.end_time.in_time_zone("Eastern Time (US & Canada)").strftime("%l:%M%p")} - #{event.title} - #{event.location}"
+					    #{event.start_time.in_time_zone("Eastern Time (US & Canada)").strftime("%l:%M%p")} - #{event.end_time.in_time_zone("Eastern Time (US & Canada)").strftime("%l:%M%p")} - #{event.title} - #{event.location}"
 						end
 					r.Message 'Here are some events for this Sunday. For Friday or Saturday events, text back "friday" or "saturday"'
 				end

@@ -61,7 +61,7 @@ class Event < ActiveRecord::Base
 	  where("location like ?", "%#{location}%") 
 	end
 
-
+# translating eventbrite structure to my structure. 
      
 end
 

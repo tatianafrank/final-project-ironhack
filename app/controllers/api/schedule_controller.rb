@@ -11,9 +11,9 @@ class Api::ScheduleController < ApplicationController
 			daydate=Chronic.parse('today 8:00')
 		elsif day=="friday" && Date::DAYNAMES[DateTime.now.wday] == 'friday'
 		
-			daydate=Chronic.parse('today 19:00')
+			daydate=Chronic.parse('today 8:00')
 		elsif day=="friday" 
-			daydate=Chronic.parse('friday 19:00')
+			daydate=Chronic.parse('friday 8:00')
 		else
 			daydate=Chronic.parse(day + ' 8:00')
 		end

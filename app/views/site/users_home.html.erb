@@ -1,76 +1,20 @@
-
+<div class="user-back">
 <!-- Fixed navbar -->
-<nav class="navbar navbar-fixed-top nav_mask">
-<div class="navi_container">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-    <span class="sr-only">
-    Toggle navigation </span>
-    <span class="icon-bar">
-    </span>
-    <span class="icon-bar">
-    </span>
-    <span class="icon-bar">
-    </span>
-    </button>
-    <a class="navbar-brand" href="/">
-    weeqend </a>
-  </div>
-  <div id="navbar" class="navbar-collapse collapse">
-    <ul class="nav navbar-nav">
-      <li>
-        <a><%=current_user.firstname%></a>
-      </li>
-        <li>
-      <% unless current_user %>
-      <a href="/users/sign_up">
-      Sign Up </a>
 
-      <% end %>
-      </li>
-      <li>
-        <% unless current_user %>
-        <a href="/users/sign_in">
-      Login </a>
-      <% end %>
-      </li>
-      <li>
-      <a href="/schedule">
-      Search </a>
-      </li>
-      <li>
-      <a href="/how-it-works">
-      How it works </a>
-      </li>
-        <li>
-          <% if current_user %>
-          <%=link_to('Log Out', destroy_user_session_path, method:'delete')%>
-      
-          <% end %>
-      </li>
-    </ul>
-  </div>
-  <!--/.nav-collapse -->
-</div>
-<!--/.nav-collapse -->
-</nav>
 
 <div class="gap">
 </div>
-
-
-<div id= "users-home-text">
-You are</div>
-<% current_user.tags.each do |tag| %>
-<div id="users-home-tags"><%= tag.name %></div>
-<%end%>
-
-
-
-<div class=" wow fadeInLeft active btn eventime_button graybtn graytxt">
- <%=link_to('your weeqend', myschedule_path)%>
+<br>
+<div class="content-all">
+<div class=" wow fadeInLeft btn eventime_button graybtn graytxt">
+ <%=link_to('your schedule', myschedule_path)%>
     </div>
+<div class= "users-home-text">
+<!-- You are</div>
+<% current_user.tags.each do |tag| %>
+<div class="users-home-tags"><%= tag.name %></div>
+<%end%> -->
 
-<img class="back" src="/assets/colors.jpg">
-   
+</div>
+</div>
 

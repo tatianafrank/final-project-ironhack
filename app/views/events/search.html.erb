@@ -1,11 +1,13 @@
-<br>
-<br>
+<div class="search-back">
+<div class="content-all">
 <%= form_tag(search_path, :method => "get", id: "search-form") do %>
- <%=select_tag("dates", options_for_select(@date, params[:dates]))%>
-  <%= select_tag("tags",  options_from_collection_for_select(Tag.all, :id, :name, params[:tags])) %>
-  <%= submit_tag "Search", :name => nil %>
+ <%=select_tag("dates", options_for_select(@date, params[:dates])) %>
+ <%= select_tag("tags",  options_from_collection_for_select(Tag.all, :id, :name, params[:tags])) %>
+  <%= submit_tag "Search", :name => nil, id: "search-btn" %>
 <% end %>
 
 <% @event.each do |result| %>
-<%= result.title %><br>
+<a class="searchResult"><%= result.title %><%=result.start_time.strftime("%l:%M %p")%> - <%=result.end_time.strftime("%l:%M %p") %><a> <br>
 <%end%>
+</div>
+</div>

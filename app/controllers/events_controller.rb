@@ -14,8 +14,8 @@ class EventsController < ApplicationController
 	def show
 	end
 	def search
-		time=[Chronic.parse('friday'), Chronic.parse('saturday'), Chronic.parse('sunday'), Chronic.parse('next friday'), Chronic.parse('next saturday'), Chronic.parse('next sunday')]
-		@date=time.map{|date| [date.strftime("%A%B%e"), date]}
+		time=[Chronic.parse('friday'), Chronic.parse('saturday'), Chronic.parse('sunday'), Chronic.parse('friday next week'), Chronic.parse('saturday next week'), Chronic.parse('sunday next week')]
+		@date=time.map{|date| [date.strftime("%A, %B %e"), date]}
 
 		if params[:dates] && params[:tags]
 			dateSearch=params[:dates].to_datetime
