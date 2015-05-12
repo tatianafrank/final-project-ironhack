@@ -9,7 +9,7 @@ class Event < ActiveRecord::Base
 		loop do
 		  event=Event
 		  	.where('start_time >= ?', next_available)
-			.where('start_time <= ?', daydate.tomorrow )
+			.where('start_time < ?', daydate.tomorrow)
 		
 
 		  if user.present?
@@ -34,7 +34,7 @@ class Event < ActiveRecord::Base
 	     	description= event['description']
 	     	location= event['venue_name']
 	     	efid= event['id']
-	     	start_time= event['start_time']
+	     	start_time= event['start_time'].change(:offset => "-0400")
 		     	if event['stop_time'].nil?
 		     		end_time= event['start_time']+2.hours
 		     	else
