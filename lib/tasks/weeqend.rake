@@ -21,6 +21,7 @@ namespace :weeqend do
   task import_eventbrite: :environment do
     # eventSearch= Tag.all
     # eventSearch.each do |tag|
+
     appKey= {app_key: 'WMFRPMJNWFYT57ZBIN'}
     eventbrite = EventbriteClient.new(appKey)
     # hash = JSON.parse('json string')

@@ -1,9 +1,13 @@
 .searchResult{
-  color: #fff;
+  color: black;
   font-size: 30px;
 
 }
 
+.searchPanel{
+  width: 64%;
+  margin-top: 2%;
+}
 
 .landing-back{
 background: url('/assets/colors.jpg') ;
@@ -113,7 +117,8 @@ background-size: cover;
 
 .content-all a{
   padding: 5%;
-  color: #fff;
+  color: #4F96A5;
+  text-align: center;
 }
 
 

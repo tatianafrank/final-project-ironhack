@@ -5,9 +5,13 @@
  <%= select_tag("tags",  options_from_collection_for_select(Tag.all, :id, :name, params[:tags])) %>
   <%= submit_tag "Search", :name => nil, id: "search-btn" %>
 <% end %>
-
+<div class="panel panel-default searchPanel">
+  <div class="panel-body">
 <% @event.each do |result| %>
-<a class="searchResult"><%= result.title %><%=result.start_time.strftime("%l:%M %p")%> - <%=result.end_time.strftime("%l:%M %p") %><a> <br>
+<a class="searchResult"><%= result.title %><br><%=result.start_time.strftime("%l:%M %p")%> - <%=result.end_time.strftime("%l:%M %p") %></a> <br>
 <%end%>
+    
+  </div>
+</div>
 </div>
 </div>

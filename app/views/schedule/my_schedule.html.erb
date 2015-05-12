@@ -6,7 +6,7 @@
 </div>
 <div class="first_title">
   <p class=" wow fadeInDown">
-    SCHEDULE
+ 
   </p>
 </div>
 <div class="first_description">
@@ -14,8 +14,7 @@
     
   </p>
 </div>
-<div class="mini_gap">
-</div>
+<br><br>
 <div id="sh_carousel" class="carousel slide js-whole-carousel" data-interval="false">
   <!-- Carousel indicators -->
   <div class="carousel-indicators">
@@ -40,10 +39,10 @@
       <% @schedule.each do |event| %>
       
           <div class="schedule_date wow fadeInLeft js-erase-me">
-        <%= Chronic.parse('friday').day %>
+        <%= event.start_time.in_time_zone("Eastern Time (US & Canada)").day %>
       </div>
       <div class="schedule_month wow fadeInRight js-erase-me">
-         <%= Date::MONTHNAMES[Chronic.parse('friday').month] %>      
+         <%= Date::MONTHNAMES[Chronic.parse('friday').in_time_zone("Eastern Time (US & Canada)").month] %>      
       </div>
       <!-- Accordion item -->
       <div class="mini_gap js-erase-me">
@@ -73,14 +72,18 @@
         </div>
         <div id="<%=event.id%>" class="panel-collapse collapse accordion_full">
           <p>
+            <% if event.description %>
             <%= event.description.html_safe %>
+            <% end %>
             <div title="Add to Calendar" class="addthisevent">
                 Add to Calendar
                 <span class="start"><%=event.start_time.strftime('%m/%d/%y')%> <%=event.start_time.strftime('%H:%M%P')%></span>
                 <span class="end"><%=event.end_time.strftime('%m/%d/%y')%><%=event.end_time.strftime('%H:%M%P')%></span>
                 <span class="timezone">America/New_York</span>
                 <span class="title"><%=event.title%></span>
+                <% if event.description %>
                 <span class="description"><%=event.description.html_safe %></span>
+                <% end %>
                 <span class="location"><%=event.location%></span>
                 <span class="date_format">MM/DD/YYYY</span>
             </div>
@@ -115,6 +118,5 @@
             </div>
           </div>
         </div>
-        <!-- End Schedule -->
-        <div class="mini_gap">
-        </div>
+        
+      

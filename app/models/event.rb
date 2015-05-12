@@ -5,17 +5,19 @@ class Event < ActiveRecord::Base
 	def self.schedule_for(daydate, user = nil)
 		schedule = []
 		next_available= daydate
-
 		loop do
 		  event=Event
 		  	.where('start_time >= ?', next_available)
-			.where('start_time < ?', daydate.tomorrow)
+			.where('start_time < ?', daydate.tomorrow )
+			
 		
 
 		  if user.present?
 		  	event = event.includes(:tags).where(tags: { id: user.tags })
 		  end
 		  event=event.first
+
+
 
 			if event.nil?
 				break
