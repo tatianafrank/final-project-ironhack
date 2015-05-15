@@ -1,3 +1,5 @@
+before_action :authenticate_user!
+
 <div class="search-back">
 <div class="content-all">
 <%= form_tag(search_path, :method => "get", id: "search-form") do %>
