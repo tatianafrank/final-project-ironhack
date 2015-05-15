@@ -48,6 +48,31 @@ class Event < ActiveRecord::Base
 	    	end
 	    end
     end
+    def self.import_eventbrite(hash, tag)
+    	  hash['events'].each do |event|
+    	  unless event['name'].nil?
+	      	title=event['name']['text']
+	      end
+	      unless event['description'].nil?
+	      	description=event['description']['text']
+	  	  end
+	      start_time=event['start']['utc']
+		      if event['end'].nil?
+			    end_time= event['start']+2.hours
+	     	  else
+	     	    end_time= event['end']['utc']
+	     	  end
+	      location=event['venue']['address']['address_1']
+	      ebid=event['id']
+	      unless event['categories'].nil?
+	      	ebcategory=event['categories']['id']
+	      end
+	     	  unless Event.find_by(ebid: event['id'])
+		    	puts "Importing Eventful event ##{event['id']}"
+	      		Event.create(title: title, description: description, location: location, start_time: start_time, end_time: end_time, ebid: ebid).tags.push(tag)
+	    	end
+    	end
+    end
 
     def replacement(user)
 		start=self.start_time

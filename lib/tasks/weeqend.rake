@@ -17,18 +17,17 @@ namespace :weeqend do
   end
 
 
-  desc "Import events from eventful"
+  desc "Import events from eventbrite"
   task import_eventbrite: :environment do
-    # eventSearch= Tag.all
-    # eventSearch.each do |tag|
-
-    appKey= {app_key: 'WMFRPMJNWFYT57ZBIN'}
-    eventbrite = EventbriteClient.new(appKey)
-    # hash = JSON.parse('json string')
-    response= Faraday.get 'https://www.eventbriteapi.com/v3/events/search/?token=O6MQ6EAQTEUY4QR7OQ2U&q=hell&venue.city=New%20York'
-    p response
-                     
+    eventSearch= Tag.all
+    eventSearch.each do |tag|
+      1.upto(20) do |num|   
+        response= Faraday.get 'https://www.eventbriteapi.com/v3/events/search/?token=O6MQ6EAQTEUY4QR7OQ2U&venue.city=New%20York&categories=' + tag.ebcategory + '&page=' + num.to_s
+        p response
+        hash = JSON.parse(response.body)
+        Event.import_eventbrite(hash, tag)
+      end                 
+    end
   end
+
 end
-
-
