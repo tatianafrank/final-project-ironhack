@@ -1,27 +1,26 @@
-== README
+Weeqend is a Ruby on Rails web application for event discovery in New York.
+The application is currently hosted on a free heroku account at: myweeqend.herokuapp.com
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+Gems and APIs used for this application:
+Twilio- Text (555)-WEEQEND and application responds with events for the Friday, Saturday, or Sunday
+Eventbrite- Events for the database 
+Eventful- Events for the database
+AddThisEvent- Button for adding event to multiple online calendars such as google calendar
+Devise- User authentication 
+Faraday- Middleware for http requests to Eventbrite
+Chronic- Parses DateTime object for Ruby
+MomentJS- parses DateTime object for JavaScript
 
-* Ruby version
+This application is a work in progress. The goal is to have a canvas for working on SQL queries and database modeling.
+As of now the functional features include:
 
-* System dependencies
+-Saving user information to the database, indluding their interests ("tags" model in the database)
+-Populating a dynamic schedule with events from the database that match the user's tags for Friday, Saturday and Sunday
+-Search tool for events on a certain day and in a certain category
+-add an event to personal online calendar such as google calendar
+-replace an event in the schedule with AJAX
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 
 
 Please feel free to use a different markup language if you do not plan to run
